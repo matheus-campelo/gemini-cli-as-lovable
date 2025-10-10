@@ -4,15 +4,29 @@ This document outlines the step-by-step process for building and refactoring web
 
 ---
 
-## Part 1: New Project Development Roadmap
+## Part 1: UX Architecture & Design Phase
+
+**Step 0: Generate the Design Blueprint**
+*   **Persona:** UX Architect
+*   **Action:** Read and apply the principles from `.gemini/persona.md` to the user-provided `briefing.md`.
+*   **Goal:** To produce a comprehensive design and layout proposal. This document should:
+    *   Translate the "Look & Feel" from the briefing into a concrete design system (colors, typography, etc.).
+    *   Propose creative layout options for key sections.
+    *   Suggest specific conversion-focused elements (Social Proof, CTAs) to be included.
+*   **Output:** A detailed design blueprint that will guide the development process.
+
+---
+
+## Part 2: New Project Development Roadmap
 
 **Step 1: Analyze Foundational Instructions**
+*   **Persona:** Expert Co-Pilot
 *   **Action:** Read and fully comprehend the `instructions.md` file.
 *   **Goal:** Internalize the core architecture, technology stack (Vite, React, TS, Tailwind, shadcn/ui), and best practices for structure, design, and responsiveness.
 
 **Step 2: Understand Project-Specific Requirements**
-*   **Action:** Read and analyze the completed `briefing.md` file.
-*   **Goal:** Gain a deep understanding of the project's objectives, target audience, desired features, brand identity, and competitive landscape.
+*   **Action:** Read and analyze the completed `briefing.md` and the **Design Blueprint** from Part 1.
+*   **Goal:** Gain a deep understanding of the project's objectives, features, and the specific UI/UX to be implemented.
 *   **Sub-step:** If any requirements are unclear or conflicting, ask for clarification before proceeding.
 
 **Step 3: Project Scaffolding & Configuration**
@@ -23,12 +37,12 @@ This document outlines the step-by-step process for building and refactoring web
 
 **Step 4: Build Core Layout & Structure**
 *   **Action:** Create the standard directory structure (`src/pages`, `src/components`, `src/hooks`, `src/lib`, `src/assets`).
-*   **Action:** Implement the main layout in `App.tsx`, including global providers, a header, a main content area, and a footer.
+*   **Action:** Implement the main layout in `App.tsx`, including global providers, a header, a main content area, and a footer, based on the Design Blueprint.
 *   **Action:** Create placeholder components for each major section identified in the briefing (e.g., `HeroSection.tsx`, `AboutSection.tsx`, `ContactSection.tsx`).
 *   **Goal:** Assemble a basic, non-functional skeleton of the main page to validate the overall structure.
 
 **Step 5: Iterative Component Development**
-*   **Action:** Develop each section component one by one, from top to bottom.
+*   **Action:** Develop each section component one by one, from top to bottom, strictly following the Design Blueprint.
 *   **Process for each component:**
     1.  Build the UI using `shadcn/ui` components and Tailwind CSS, following a mobile-first approach.
     2.  Implement animations and transitions using `framer-motion`.
@@ -53,7 +67,7 @@ This document outlines the step-by-step process for building and refactoring web
 
 ---
 
-## Part 2: Refactoring Guidelines for a Mobile-First World
+## Part 3: Refactoring Guidelines for a Mobile-First World
 
 This section outlines a systematic process for refactoring components with a primary focus on creating a responsive, mobile-first user experience.
 
