@@ -73,20 +73,22 @@ A clean structure is key to a maintainable project.
 
 This phase focuses on creating a polished and visually appealing user experience that works on all devices.
 
-1.  **Implement Mobile-First:**
+1.  **Absolute Fidelity to the Design System:** The first action after setup is to define the design system (colors, fonts, spacing) in `src/index.css`, according to the UX Architect's plan. Once defined, this system is the single source of truth for styling. Every component, without exception, must use these variables. The use of `shadcn/ui` is a baseline, not the final result; style the components to perfectly match the project's visual identity.
+
+2.  **Implement Mobile-First:**
     *   Design and style for mobile screens first. Use Tailwind's responsive prefixes (`sm:`, `md:`, `lg:`) to scale up the design for larger viewports. This ensures a solid baseline experience on all devices.
     *   Pay close attention to touch targets, font sizes, and vertical spacing on mobile.
 
-2.  **Use Layout Primitives:**
+3.  **Use Layout Primitives:**
     *   Rely on Flexbox and Grid for all layout needs. Avoid absolute positioning for primary layout structures, as it can lead to responsiveness issues.
     *   Use `flex-col` for vertical stacking on mobile and switch to `lg:flex-row` for horizontal layouts on larger screens.
 
-3.  **Animate with Purpose:**
+4.  **Animate with Purpose:**
     *   Use `framer-motion` to add subtle, meaningful animations that enhance the user experience without being distracting.
     *   Create a reusable `AnimatedSection` component that uses the `useInView` hook to trigger animations as the user scrolls. This is effective for fade-in and slide-up effects.
     *   Apply micro-interactions to buttons and interactive elements to provide visual feedback.
 
-4.  **Centralize Content:**
+5.  **Centralize Content:**
     *   For larger sites, extract all user-facing text (titles, descriptions, etc.) into a central file (e.g., `src/data/content.ts`). This makes it easy to update copy without digging through component files.
 
 ---
@@ -96,11 +98,10 @@ This phase focuses on creating a polished and visually appealing user experience
 Before concluding, ensure the project is robust and error-free.
 
 1.  **Code Quality:**
-    *   Run the linter (`npm run lint`) to catch any inconsistencies or potential errors in the code.
+    * Run the linter (`npm run lint`) to catch any inconsistencies or potential errors in the code.
 
 2.  **Build Verification:**
-    *   Execute the production build command (`npm run build`) to ensure the application compiles successfully without any errors.
+    * Execute the production build command (`npm run build`). A successful build is the primary indicator that the application is syntactically correct, all dependencies are resolved, and it's ready for deployment. This is the final and most important verification step.
 
-3.  **Manual Review:**
-    *   Thoroughly test the application on different browsers and screen sizes (desktop, tablet, and mobile).
-    *   Verify that all interactive elements work as expected and that the design remains consistent and unbroken across all viewports.
+3.  **Handoff Preparation:**
+    * Prepare a clear summary of the work done and provide instructions for the user to run the project locally using `npm run dev`.

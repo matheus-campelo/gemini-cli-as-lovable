@@ -12,7 +12,7 @@ This project's logic is defined by a set of Markdown files that act as instructi
 
 *   `README.md`: Provides a general overview of the project, its purpose, and how to get started.
 
-*   `framework/masterprompt-eng-us.md` & `framework/masterprompt-pt-br.md`: These are the master prompts that define the AI's persona ("Expert Co-Pilot") and the high-level, phased approach to development. This is the starting point for any interaction.
+*   `framework/masterprompt.md`: This is the master prompt that defines the AI's persona ("Expert Co-Pilot")...
 
 *   `framework/briefing.md`: A template for the end-user to fill out. It captures all project requirements, including goals, target audience, visual identity ("Look & Feel"), and required content. This file serves as the primary source of truth for project-specific details.
 
@@ -23,6 +23,8 @@ This project's logic is defined by a set of Markdown files that act as instructi
 *   `framework/templates.md`: The "Approved Component Library." It contains a collection of high-quality, reusable React/TSX code snippets for all standard website sections (e.g., Hero, Features, Footer, CTA), ensuring consistency and quality.
 
 *   `examples/simple-portfolio/briefing.md`: A practical, filled-out example of the briefing document, demonstrating how to define a project within this framework.
+
+* The framework now includes guidelines and steps for implementing end-to-end tests with **Playwright**, ensuring an extra layer of quality and robustness for the generated applications.
 
 ## Usage
 

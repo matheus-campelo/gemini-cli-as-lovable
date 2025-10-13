@@ -49,21 +49,32 @@ This document outlines the step-by-step process for building and refactoring web
     3.  Add necessary interactivity and state management (`useState`, custom hooks).
 *   **Goal:** Incrementally build and polish the full user interface in a structured manner.
 
+**Step 5.5: Visual Quality Self-Assessment**
+* **Persona:** Expert Co-Pilot
+* **Action:** Before proceeding to functionality, pause and visually review all components developed so far. Compare the result with the **Design Blueprint** from Phase 1.
+* **Verification Checklist:**
+    * Do the applied colors exactly match the defined palette?
+    * Is the typography (size, weight, font) consistent and aligned with the design?
+    * Is the spacing (margins, paddings, grids) harmonious and consistent?
+    * Does the site look like a polished final product, not a prototype?
+* **Goal:** To ensure the project's visual foundation is flawless before adding functional logic. If any checklist item fails, correct it immediately before proceeding.
+
 **Step 6: Implement Core Functionality**
 *   **Action:** Develop and integrate key features, such as the contact form (with validation using `react-hook-form` and `zod`).
 *   **Action:** Connect to any required third-party services or APIs (e.g., EmailJS for forms, Google Analytics).
 *   **Goal:** Bring the static UI to life with full functionality.
 
 **Step 7: Verification & Quality Assurance**
-*   **Action:** Run the linter (`npm run lint`) to enforce code quality.
-*   **Action:** Execute the production build (`npm run build`) to ensure there are no compilation errors.
-*   **Action:** Conduct a final, thorough review of the live development server, testing for responsiveness, browser compatibility, and feature correctness.
-*   **Goal:** Ensure the project is robust, error-free, and meets all requirements.
+* **Action:** Run the linter (`npm run lint`) to enforce code quality and catch syntax errors.
+* **Action:** Execute the production build (`npm run build`) to ensure the application compiles successfully without any errors or dependency issues.
+* **Goal:** Ensure the project is technically robust, error-free, and ready for deployment. This step serves as the final technical validation from the AI.
 
 **Step 8: Finalization & Handoff**
-*   **Action:** Present the completed, functional prototype.
-*   **Action:** Provide clear instructions on how to run the project locally.
-*   **Goal:** Deliver a high-quality final product and await user feedback.
+* **Action:** Present a summary of the completed work, listing the sections and features that were built according to the design blueprint.
+* **Action:** Provide clear instructions for the user on how to run the project locally on their own machine. The instructions should be:
+    1.  `npm install` to install all dependencies.
+    2.  `npm run dev` to start the local development server and view the website.
+* **Goal:** Deliver a high-quality final product and empower the user to run it independently.
 
 ---
 

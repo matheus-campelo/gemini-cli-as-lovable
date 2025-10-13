@@ -16,6 +16,8 @@ This document contains all the essential questions needed to define and scope a 
 
 *   **1.5. Timeline:** Do you have a specific deadline or desired launch date?
 
+* **1.6. Project Language:** In which language should the website content be written? (e.g., English, Portuguese, Spanish).
+
 ---
 
 ### **Part 2: Target Audience**

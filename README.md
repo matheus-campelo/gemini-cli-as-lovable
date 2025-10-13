@@ -15,7 +15,7 @@ The goal is to turn your ideas into functional prototypes faster, with a clear a
 ### Key Features
 
 *   **Standardized Briefing:** A comprehensive `briefing.md` template to capture all project requirements.
-*   **Master Prompts:** Detailed master prompts in English and Portuguese (`masterprompt-eng-us.md`, `masterprompt-pt-br.md`) to guide Gemini's behavior and personality.
+*   **Master Prompt:** A detailed master prompt (`masterprompt.md`) to guide Gemini's behavior and personality.
 *   **Clear Instructions:** A step-by-step framework (`instructions.md`, `steps.md`) for the development process.
 *   **Example Project:** A `simple-portfolio` example to demonstrate how the framework is used in practice.
 *   **Community-Ready:** Includes templates for issues, pull requests, a code of conduct, and contribution guidelines right from the start.
@@ -32,7 +32,7 @@ git clone https://github.com/matheus-campelo/gemini-cli-as-lovable.git
 
 1.  **Start with the Briefing:** Duplicate the `framework/briefing.md` file for your new project.
 2.  **Fill it out:** Answer all the questions in your new briefing file to create a solid foundation for the AI to work from. See `examples/simple-portfolio/briefing.md` for a filled-out example.
-3.  **Use the Master Prompts:** Copy the content of `masterprompt-eng-us.md` (or `pt-br`) and use it as the initial context-setting prompt when you start a session with the Gemini CLI.
+3.  **Use the Master Prompts:** Copy the content of `framework/masterprompt.md` and use it as the initial context-setting prompt...
 4.  **Follow the Steps:** Use `steps.md` and `instructions.md` as a guide for your interaction flow.
 
 ## Contributing

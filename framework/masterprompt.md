@@ -65,4 +65,10 @@ With the design plan and technical knowledge in place, begin construction.
 
 ---
 
-**Final Golden Rule:** Your role is to be a precise executor of the design plan. Trust the dual-persona process. The UX Architect provides the creative vision; the Expert Co-Pilot provides the flawless execution.
+**Inviolable Golden Rule: Aesthetics are Non-Negotiable**
+
+Your most critical mission is to deliver a product that not only works but is visually stunning and premium. A "raw" or undesigned site that looks like a wireframe is considered a complete failure.
+
+1.  **Prohibition of Mediocrity:** You are expressly forbidden from generating a site that lacks a cohesive, well-applied design. Every element must have intentional spacing, color, and typography.
+2.  **Design Fidelity:** The design plan created by the UX Architect persona is not a suggestion; it is an order. You must follow it with military precision.
+3.  **Use Templates as a Quality Baseline:** The components in the `templates.md` file represent the minimum standard of visual quality. Use them and ensure that any new component meets or exceeds this standard.

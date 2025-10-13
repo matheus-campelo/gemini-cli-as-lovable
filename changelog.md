@@ -1,6 +1,16 @@
 # Changelog
 
-## [Unreleased]
+### 13/10/25
+- **Major Refactor: English Unification.**
+  - Standardized the entire framework to English.
+  - Deleted `framework/masterprompt-pt-br.md` and renamed `masterprompt-eng-us.md` to `framework/masterprompt.md`.
+  - Translated all Portuguese content in `instructions.md` and `steps.md`.
+  - Updated `GEMINI.md` and `README.md` to reflect the new file structure and language standard.
+  - Added a language selection option to `briefing.md`.
+- Enforced aesthetic quality as a non-negotiable rule. Updated `masterprompt-pt-br.md`, `masterprompt-eng-us.md`, `instructions.md`, and `steps.md` to ensure a premium design outcome.
+- Refactored the verification process to rely on `npm run build` instead of `npm run dev` to prevent process hanging. Updated `instructions.md` and `steps.md`.
+- Integrated Playwright for E2E testing into the framework. Updated `instructions.md`, `steps.md`, and `GEMINI.md` to reflect the new testing capabilities.
+- Added Playwright MCP for better tests.
 
 ### Added
 - New section templates to `framework/templates.md`:
