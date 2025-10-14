@@ -13,6 +13,7 @@
 
 ## ESTRUTURA E LAYOUT
 
+<!--- TEMPLATE_START: AppLayout -->
 ### 1. Template: `Layout Principal (App.tsx)`
 
 * **Descrição:** A estrutura raiz da aplicação. Responsável por prover o layout geral (Header, main, Footer) e encapsular a aplicação com provedores globais, como o `TooltipProvider` da `shadcn/ui`.
@@ -39,7 +40,9 @@
 
     export default App;
     ```
+<!--- TEMPLATE_END: AppLayout -->
 
+<!--- TEMPLATE_START: Header -->
 ### 2. Template: `Header (Navbar)`
 
 * **Descrição:** Um cabeçalho responsivo e fixo. Contém o logo da empresa, links de navegação para desktop e um menu "hambúrguer" que aciona um `Sheet` (menu lateral) em dispositivos móveis.
@@ -100,11 +103,69 @@
       );
     }
     ```
+<!--- TEMPLATE_END: Header -->
+
+<!--- TEMPLATE_START: ThemeProvider -->
+### 3. Template: `ThemeProvider (Context)`
+
+* **Descrição:** Um provedor de contexto para gerenciar o estado do tema (light/dark) em toda a aplicação. Ele armazena o estado e fornece uma função para alterná-lo. Opcionalmente, pode persistir a preferência do usuário no `localStorage`.
+* **Estrutura de Código:**
+    ```tsx
+    // src/contexts/ThemeProvider.tsx
+    import { createContext, useContext, useState, useEffect } from 'react';
+
+    type Theme = "light" | "dark";
+
+    interface ThemeProviderState {
+      theme: Theme;
+      setTheme: (theme: Theme) => void;
+    }
+
+    const ThemeProviderContext = createContext<ThemeProviderState | undefined>(undefined);
+
+    export function ThemeProvider({ children }: { children: React.ReactNode }) {
+      const [theme, setTheme] = useState<Theme>(() => {
+        const storedTheme = localStorage.getItem('theme') as Theme | null;
+        return storedTheme || 'light';
+      });
+
+      useEffect(() => {
+        const root = window.document.documentElement;
+        root.classList.remove('light', 'dark');
+        root.classList.add(theme);
+        localStorage.setItem('theme', theme);
+      }, [theme]);
+
+      const value = {
+        theme,
+        setTheme,
+      };
+
+      return (
+        <ThemeProviderContext.Provider value={value}>
+          {children}
+        </ThemeProviderContext.Provider>
+      );
+    }
+
+    export function useTheme() {
+      const context = useContext(ThemeProviderContext);
+      if (context === undefined) {
+        throw new Error('useTheme must be used within a ThemeProvider');
+      }
+      return context;
+    }
+    ```
+* **Como Usar:**
+  1.  Encapsule sua aplicação principal (em `App.tsx` ou `main.tsx`) com o `<ThemeProvider>`.
+  2.  Em qualquer componente filho, use o hook `useTheme()` para acessar o tema atual e a função `setTheme`.
+<!--- TEMPLATE_END: ThemeProvider -->
 
 ---
 
 ## SEÇÕES DE PÁGINA (ORGANISMOS)
 
+<!--- TEMPLATE_START: HeroSection -->
 ### 1. Template: `Hero Section`
 
 * **Descrição:** A primeira seção de impacto da página. Deve conter um título forte (H1), um parágrafo de suporte e um botão de CTA principal. Opcionalmente, pode ter um CTA secundário e uma imagem ou vídeo de fundo.
@@ -146,7 +207,9 @@
       );
     }
     ```
+<!--- TEMPLATE_END: HeroSection -->
 
+<!--- TEMPLATE_START: FeaturesSection -->
 ### 2. Template: `Features Section`
 
 * **Descrição:** Seção que destaca os principais benefícios ou funcionalidades do produto/serviço. Usa um layout de grid que é responsivo. Cada feature é apresentada em um `Card`.
@@ -196,7 +259,9 @@
         );
     }
     ```
+<!--- TEMPLATE_END: FeaturesSection -->
 
+<!--- TEMPLATE_START: TestimonialsSection -->
 ### 3. Template: `Testimonials Section`
 
 * **Descrição:** Exibe prova social através de depoimentos de clientes. Utiliza um `Carousel` para navegar entre os depoimentos.
@@ -248,7 +313,9 @@
         );
     }
     ```
+<!--- TEMPLATE_END: TestimonialsSection -->
 
+<!--- TEMPLATE_START: Footer -->
 ### 4. Template: `Footer Section`
 * **Descrição:** Um rodapé para a página. Contém o logo, uma breve descrição, links para redes sociais e colunas de links úteis.
 * **Props:**
@@ -296,7 +363,9 @@
       );
     }
     ```
+<!--- TEMPLATE_END: Footer -->
 
+<!--- TEMPLATE_START: CtaSection -->
 ### 5. Template: `Call to Action (CTA) Section`
 * **Descrição:** Uma seção simples e direta para incentivar o usuário a tomar uma ação final.
 * **Props:**
@@ -333,11 +402,13 @@
         );
     }
     ```
+<!--- TEMPLATE_END: CtaSection -->
 
 ---
 
 ## HOOKS E UTILITÁRIOS
 
+<!--- TEMPLATE_START: AnimatedSection -->
 ### 1. Template: `AnimatedSection Wrapper`
 
 * **Descrição:** Um componente wrapper que utiliza `framer-motion` e o hook `useInView` para aplicar animações de fade-in e slide-up a qualquer seção filho quando ela se torna visível na tela.
@@ -375,11 +446,13 @@
       );
     }
     ```
+<!--- TEMPLATE_END: AnimatedSection -->
 ---
 1. Novos Templates de Seção (Organismos)
 Esses novos componentes de seção são projetados para incorporar os gatilhos psicológicos de Prova Social e Autoridade, como descrito na Seção 1.3 do guia.
 
 
+<!--- TEMPLATE_START: SocialProofLogos -->
 Template: SocialProofLogos Section
 Descrição: Uma seção dedicada a exibir os logos de clientes, parceiros ou empresas que utilizam seu produto. Isso gera Prova Social instantânea e transfere a confiança que outras marcas têm para o novo visitante. Ideal para ser posicionada logo após a seção de Features ou antes dos Depoimentos.
 
@@ -425,6 +498,9 @@ export default function SocialProofLogos({ title, logos }: SocialProofLogosProps
     </AnimatedSection>
   );
 }
+<!--- TEMPLATE_END: SocialProofLogos -->
+
+<!--- TEMPLATE_START: AuthoritySection -->
 Template: AuthoritySection (As Seen On)
 Descrição: Uma seção para destacar menções na mídia, prêmios recebidos ou selos de segurança. Isso aciona o gatilho de Autoridade, mostrando que sua oferta é reconhecida por figuras ou instituições relevantes.
 
@@ -440,6 +516,9 @@ TypeScript
 
 // src/components/sections/AuthoritySection.tsx
 // Similar em estrutura ao SocialProofLogos, mas pode usar links para as matérias ou prêmios.
+<!--- TEMPLATE_END: AuthoritySection -->
+
+<!--- TEMPLATE_START: FaqSection -->
 Template: FaqSection
 Descrição: Uma seção de Perguntas Frequentes (FAQ) que utiliza um componente de Accordion para responder às principais dúvidas e objeções dos visitantes. Superar objeções é um passo crucial na jornada de conversão, conforme detalhado nas estruturas de copywriting como AIDA e PAS.
 
@@ -457,12 +536,7 @@ Estrutura de Código:
 TypeScript
 
 // src/components/sections/FaqSection.tsx
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, } from "@/components/ui/accordion";
 import AnimatedSection from "@/components/AnimatedSection";
 
 interface Faq {
@@ -491,7 +565,9 @@ export default function FaqSection({ title, description, faqs }: FaqProps) {
     </AnimatedSection>
   );
 }
+<!--- TEMPLATE_END: FaqSection -->
 
+<!--- TEMPLATE_START: AnimatedHeroSection -->
 Template: Animated Hero Section
 Descrição: Uma seção de herói de alto impacto, projetada para capturar a atenção do usuário com um título dinâmico. Uma parte do título principal permanece estática, enquanto uma palavra-chave central é animada, ciclando através de uma lista de opções (ex: "amazing", "new", "wonderful"). É ideal para comunicar múltiplos benefícios ou características de forma concisa e visualmente atraente.
 
@@ -607,10 +683,13 @@ export default function AnimatedHeroSection({
     </AnimatedSection>
   );
 }
+<!--- TEMPLATE_END: AnimatedHeroSection -->
+
 2. Melhorias nos Templates Existentes
 As melhorias a seguir aplicam os conceitos de otimização de formulários e microcopy para reduzir o atrito nos pontos mais críticos da conversão.
 
 
+<!--- TEMPLATE_START: CtaAnxietyReducer -->
 Melhoria no Template: HeroSection e CtaSection
 Ação: Adicionar uma prop opcional para "microcopy de suporte" abaixo do botão de CTA. O guia enfatiza que frases de apoio removem a ansiedade e o risco percebido, aumentando as taxas de clique.
 
@@ -639,6 +718,9 @@ export default function HeroSection({ /* ...outras props */, ctaAnxietyReducer }
     </AnimatedSection>
   );
 }
+<!--- TEMPLATE_END: CtaAnxietyReducer -->
+
+<!--- TEMPLATE_START: FormField -->
 Melhoria Geral para Formulários: Adicionar um Template de FormField
 
 Ação: Criar um componente FormField genérico que incorpore as melhores práticas para formulários, como rótulos sempre visíveis (não usando placeholders como rótulos) e espaço para mensagens de erro e dicas (microcopy). Isso pode ser usado para construir qualquer tipo de formulário de forma consistente.
@@ -673,3 +755,5 @@ export default function FormField({ id, label, type, placeholder, errorMessage, 
     </div>
   );
 }
+<!--- TEMPLATE_END: FormField -->
+

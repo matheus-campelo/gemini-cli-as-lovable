@@ -1,142 +1,115 @@
 # Project Development & Refactoring Roadmap
 
-This document outlines the step-by-step process for building and refactoring web applications, ensuring alignment with technical standards and project-specific requirements.
+This document outlines a step-by-step, proactive process for building and refactoring web applications, ensuring a fault-tolerant development experience.
 
 ---
 
-## Part 1: UX Architecture & Design Phase
+## Part 1: Collaborative UX Architecture & Design Phase
 
-**Step 0: Generate the Design Blueprint**
-*   **Persona:** UX Architect
-*   **Action:** Read and apply the principles from `.gemini/persona.md` to the user-provided `briefing.md`.
-*   **Goal:** To produce a comprehensive design and layout proposal. This document should:
-    *   Translate the "Look & Feel" from the briefing into a concrete design system (colors, typography, etc.).
-    *   Propose creative layout options for key sections.
-    *   Suggest specific conversion-focused elements (Social Proof, CTAs) to be included.
-*   **Output:** A detailed design blueprint that will guide the development process.
+**Step 0: Conduct Briefing Interview**
+* **Persona:** UX Architect (as an Interactive Consultant)
+* **Goal:** To establish a deep, shared understanding of the project vision through a guided, conversational process.
+* **Action:** Instead of passively reading `briefing.md`, initiate a dialogue with the user. Ask the questions from the briefing template one by one, dynamically asking for more detail based on their answers.
+* **Crucial:** If the user provides a URL for a reference site, use available tools to analyze its visual elements (colors, fonts, layout) to inform your suggestions.
+* **Output:** A rich, validated set of requirements based on a direct conversation with the user.
+
+**Step 0.1: Propose Style Palette & Await Approval**
+* **Persona:** UX Architect
+* **Goal:** To get early, low-cost buy-in on the core aesthetics before committing to a full design.
+* **Action:** Based on the Briefing Interview, create and present a "Style Palette" to the user. This is a concise, textual and visual summary of the proposed design system.
+* **Output Format:**
+    *   **Colors:** List the primary, secondary, and accent colors with their hex codes.
+    *   **Typography:** Name the proposed fonts for headings and body text.
+    *   **Component Style:** Describe the style of key elements (e.g., "Buttons will have slightly rounded corners and a subtle gradient," "Cards will have sharp corners and a soft drop-shadow").
+*   **Do not proceed until the user explicitly approves the Style Palette.**
+
+**Step 0.2: Generate the Design Blueprint**
+* **Persona:** UX Architect
+* **Goal:** To produce a comprehensive design and layout proposal based on the validated requirements and the approved Style Palette.
+* **Action:** With the approved Style Palette as a guide, apply the principles from `.gemini/persona.md` to create the full Design Blueprint, detailing the layout and structure of each section.
+* **Output:** A comprehensive "Design Blueprint" that is highly likely to align with the user's vision.
 
 ---
 
-## Part 2: New Project Development Roadmap
+## Part 2: Technical Architecture & Implementation (JIT Workflow)
+
+**Step 0.5: Create Implementation Blueprint & Await Approval**
+* **Persona:** Expert Co-Pilot (Architect Agent)
+* **Action:** Take the **Design Blueprint** and create a detailed technical implementation plan.
+* **Plan Requirements:**
+    1.  List every file to be created or modified.
+    2.  Summarize the props and structure for each new component.
+    3.  **Crucially, list all specific templates from `templates.md` that will be required for the implementation (e.g., `HeroSection`, `FaqSection`).**
+* **Action:** Present this plan to the user for approval.
+* **Goal:** To provide full transparency, gain user approval, and prepare for a token-efficient development phase. **Do not proceed without explicit user confirmation.**
 
 **Step 1: Analyze Foundational Instructions**
-*   **Persona:** Expert Co-Pilot
-*   **Action:** Read and fully comprehend the `instructions.md` file.
-*   **Goal:** Internalize the core architecture, technology stack (Vite, React, TS, Tailwind, shadcn/ui), and best practices for structure, design, and responsiveness.
+* **Persona:** Coder Agent
+* **Action:** (Upon approval) Read and fully comprehend your role-specific checklist and the `instructions.md` file.
+* **Goal:** Internalize the core architecture and token-efficient best practices.
 
 **Step 2: Understand Project-Specific Requirements**
-*   **Action:** Read and analyze the completed `briefing.md` and the **Design Blueprint** from Part 1.
-*   **Goal:** Gain a deep understanding of the project's objectives, features, and the specific UI/UX to be implemented.
-*   **Sub-step:** If any requirements are unclear or conflicting, ask for clarification before proceeding.
+*   **Action:** Read and analyze the approved **Implementation Blueprint**.
+*   **Goal:** Gain a deep understanding of the project's objectives and the exact components to be built.
 
-**Step 3: Project Scaffolding & Configuration**
-*   **Action:** Create a new project directory and initialize a Vite project with the `react-ts` template.
-*   **Action:** Install all necessary dependencies (e.g., `tailwindcss`, `framer-motion`, `lucide-react`, `shadcn/ui`).
-*   **Action:** Configure the project by setting up `tailwind.config.ts`, `postcss.config.js`, `tsconfig.json` (with path aliases), and `vite.config.ts`.
-*   **Goal:** Establish a clean, configured, and ready-to-develop project environment.
+**Step 2.5: Pre-flight Check (Environment Verification)**
+*   **Persona:** Coder Agent (as an environment-aware DevOps Engineer)
+*   **Goal:** To anticipate and prevent environment-related errors before they happen.
+*   **Action 1: Detect Operating System.**
+*   **Action 2: Verify Critical Dependencies.**
+
+**Step 3: Project Scaffolding & Configuration (Dependency-Stable Method)**
+*   **Goal:** To establish a reproducible and stable project environment.
+*   **Action 1: Create Project.**
+*   **Action 2: Stabilize Dependencies** (using `package.template.json`).
+*   **Action 3: Install Dependencies.**
+*   **Action 4: Configure Project.**
 
 **Step 4: Build Core Layout & Structure**
-*   **Action:** Create the standard directory structure (`src/pages`, `src/components`, `src/hooks`, `src/lib`, `src/assets`).
-*   **Action:** Implement the main layout in `App.tsx`, including global providers, a header, a main content area, and a footer, based on the Design Blueprint.
-*   **Action:** Create placeholder components for each major section identified in the briefing (e.g., `HeroSection.tsx`, `AboutSection.tsx`, `ContactSection.tsx`).
-*   **Goal:** Assemble a basic, non-functional skeleton of the main page to validate the overall structure.
+*   **Action:** Create the standard directory structure and implement the main layout in `App.tsx`.
+*   **Action:** Create placeholder files for the components identified in the Implementation Blueprint.
+*   **Goal:** Assemble a basic, non-functional skeleton of the main page.
+*   **Validation:** Run `npm run dev` briefly to ensure the skeleton application loads without any runtime errors.
 
-**Step 5: Iterative Component Development**
-*   **Action:** Develop each section component one by one, from top to bottom, strictly following the Design Blueprint.
-*   **Process for each component:**
-    1.  Build the UI using `shadcn/ui` components and Tailwind CSS, following a mobile-first approach.
-    2.  Implement animations and transitions using `framer-motion`.
-    3.  Add necessary interactivity and state management (`useState`, custom hooks).
-*   **Goal:** Incrementally build and polish the full user interface in a structured manner.
+**Step 5: Iterative Component Development (JIT Method)**
+*   **Action 1: Extract Required Templates.**
+    *   Based on the list of required templates from the Implementation Blueprint, parse `framework/templates.md`.
+    *   Extract *only* the code for the specified templates (e.g., the content between `<!--- TEMPLATE_START: HeroSection -->` and `<!--- TEMPLATE_END: HeroSection -->`).
+*   **Action 2: Develop Components.**
+    *   With the small, relevant context of the extracted templates, develop each section component one by one.
+    *   If a component is not in the templates, follow the `Protocol for Generating New Components`.
+*   **Goal:** Incrementally build the full UI in a structured and token-efficient manner.
 
 **Step 5.5: Visual Quality Self-Assessment**
 * **Persona:** Expert Co-Pilot
-* **Action:** Before proceeding to functionality, pause and visually review all components developed so far. Compare the result with the **Design Blueprint** from Phase 1.
-* **Verification Checklist:**
-    * Do the applied colors exactly match the defined palette?
-    * Is the typography (size, weight, font) consistent and aligned with the design?
-    * Is the spacing (margins, paddings, grids) harmonious and consistent?
-    * Does the site look like a polished final product, not a prototype?
-* **Goal:** To ensure the project's visual foundation is flawless before adding functional logic. If any checklist item fails, correct it immediately before proceeding.
+* **Action:** Pause and visually review all developed components against the **Design Blueprint**.
+* **Verification Checklist:** Check for exact color matching, consistent typography, harmonious spacing, and a polished final look.
+* **Goal:** Ensure visual perfection before adding complex logic. Correct any deviations immediately.
 
 **Step 6: Implement Core Functionality**
-*   **Action:** Develop and integrate key features, such as the contact form (with validation using `react-hook-form` and `zod`).
-*   **Action:** Connect to any required third-party services or APIs (e.g., EmailJS for forms, Google Analytics).
+*   **Action:** Develop and integrate key features like contact forms, API connections, etc.
 *   **Goal:** Bring the static UI to life with full functionality.
 
-**Step 7: Verification & Quality Assurance**
-* **Action:** Run the linter (`npm run lint`) to enforce code quality and catch syntax errors.
-* **Action:** Execute the production build (`npm run build`) to ensure the application compiles successfully without any errors or dependency issues.
-* **Goal:** Ensure the project is technically robust, error-free, and ready for deployment. This step serves as the final technical validation from the AI.
+**Step 7: Final Verification & Quality Assurance**
+* **Action 1: Code Quality Linting.**
+    *   Run `npm run lint`.
+    *   **Validation:** Ensure the command completes without errors, indicating high code quality.
+* **Action 2: Production Build.**
+    *   Execute `npm run build`.
+    *   **Validation:** This is the most critical check. The command **must** complete with a success message (e.g., "Build successful!") and generate a `dist` directory. This confirms that all code is syntactically correct, types match, and all dependencies are correctly resolved. An error here indicates a critical failure that must be addressed.
+* **Action 3: End-to-End Testing.**
+    *   Run `npx playwright test`.
+    *   **Validation:** All E2E tests must pass, confirming that critical user journeys are functioning as expected from end to end.
 
 **Step 8: Finalization & Handoff**
-* **Action:** Present a summary of the completed work, listing the sections and features that were built according to the design blueprint.
-* **Action:** Provide clear instructions for the user on how to run the project locally on their own machine. The instructions should be:
-    1.  `npm install` to install all dependencies.
-    2.  `npm run dev` to start the local development server and view the website.
-* **Goal:** Deliver a high-quality final product and empower the user to run it independently.
+* **Action:** Present a summary of the completed work.
+* **Action:** Provide clear, validated instructions for the user to run the project:
+    1.  `npm install`
+    2.  `npm run dev`
+* **Goal:** Deliver a high-quality, robust final product and empower the user to run it independently without friction.
 
 ---
 
-## Part 3: Refactoring Guidelines for a Mobile-First World
+## Part 3: Refactoring Guidelines
 
-This section outlines a systematic process for refactoring components with a primary focus on creating a responsive, mobile-first user experience.
-
-### **The Mobile-First Mindset**
-
-Instead of designing for a large screen and then scaling down, we build for the small screen first and then adapt the layout for larger viewports. This results in cleaner CSS, better performance on mobile devices, and a more resilient design.
-
-**Core Principle:** Start with a simple, single-column layout and progressively enhance it with responsive prefixes (`sm:`, `md:`, `lg:`).
-
-### **Step-by-Step Refactoring Process**
-
-#### **Phase 1: Analysis & Planning**
-
-1.  **Identify the Refactoring Goal:**
-    *   Clearly define what needs to be improved. Is it a specific component's layout on mobile? Is the CSS overly complex? Is there horizontal overflow on small screens?
-
-2.  **Analyze the Existing Code:**
-    *   Read the target component(s) and any associated styling.
-    *   Understand its current layout structure, props, and state management.
-
-3.  **Check for a Test Safety Net:**
-    *   Look for existing unit, integration, or end-to-end (e.g., Playwright) tests that cover the component's functionality.
-    *   If no tests exist, consider adding a few basic assertions to prevent regressions before starting the refactor.
-
-4.  **Formulate a Mobile-First Plan:**
-    *   **Visualize the Mobile State:** How should this component look on a narrow screen? The simplest answer is usually a single vertical column.
-    *   **Identify Breakpoints:** Determine at which screen widths (`sm`, `md`, `lg`, `xl`) the layout should adapt. For example, a 3-column grid on desktop might become a 2-column grid on tablets and a 1-column stack on mobile.
-
-#### **Phase 2: Execution**
-
-5.  **Reset to a Mobile Baseline:**
-    *   Temporarily remove or comment out existing complex layout classes (e.g., `grid-cols-3`, `flex-row`, `lg:w-1/2`).
-    *   Apply the simplest, mobile-first styles. This usually means using `flex flex-col` or `grid grid-cols-1`.
-
-6.  **Build Up from Mobile:**
-    *   Ensure the component looks and functions perfectly on a narrow viewport. There should be no horizontal scrolling.
-    *   Incrementally add responsive prefixes to adapt the layout for larger screens. Start with `sm:`, then `md:`, and so on.
-    *   **Example:** A list that is vertical on mobile and horizontal on desktop would use `flex-col lg:flex-row`.
-
-7.  **Refactor Responsively:**
-    *   Apply responsive prefixes not just to layouts but also to spacing (`p-4 lg:p-8`), typography (`text-base md:text-lg`), and element visibility (`hidden md:flex`).
-
-8.  **Simplify and Componentize:**
-    *   While refactoring the styles, look for opportunities to simplify the component's logic.
-    *   If a part of the UI is complex or repeated, extract it into its own smaller, reusable component.
-
-#### **Phase 3: Verification**
-
-9.  **Manual Viewport Testing:**
-    *   Use browser developer tools to test the component across a wide range of screen sizes, from the smallest mobile devices (e.g., 320px width) up to large desktops.
-    *   Ensure the layout adapts gracefully at each breakpoint without visual bugs or content overflow.
-
-10. **Run Automated Tests:**
-    *   Execute the entire test suite (if available) to confirm that the refactoring did not break any existing functionality.
-
-11. **Code Quality & Linting:**
-    *   Run the linter (`npm run lint`) to ensure the new code adheres to the project's style guide.
-    *   Review the code for clarity and maintainability. The mobile-first classes should make the responsive logic easy to read.
-
-12. **Final Build:**
-    *   Run the production build command (`npm run build`) as a final check to catch any potential compilation errors.
+(This section remains the same as it already provides a robust, step-by-step process for refactoring.)

@@ -1,6 +1,6 @@
-# Gemini's Guide to Building Premium Websites
+# Gemini's Guide to Building Premium Websites (Architecture Hub)
 
-This guide outlines a structured approach for building modern, responsive, and well-architected web applications.
+This document serves as a central hub for the framework's technical guidelines. The detailed, step-by-step instructions have been distilled into role-specific checklists for efficiency.
 
 **Core Tech Stack:**
 *   **Build Tool:** Vite
@@ -12,96 +12,88 @@ This guide outlines a structured approach for building modern, responsive, and w
 
 ---
 
-## Phase 1: Project Setup & Foundation
+## Key Architectural Documents
 
-The goal of this phase is to establish a robust and scalable project foundation.
+1.  **`framework/masterprompt.md`**
+    *   Defines the AI personas (Consultant, Architect, Coder) and the overall workflow.
 
-1.  **Initialize Project:**
-    *   Start a new project using Vite with the React + TypeScript template:
-        ```bash
-        npm create vite@latest my-premium-app -- --template react-ts
-        ```
+2.  **`framework/steps.md`**
+    *   Outlines the detailed, step-by-step execution plan for the entire project lifecycle.
 
-2.  **Install Core Dependencies:**
-    *   Navigate into the project directory and install the essential libraries.
-        ```bash
-        npm install tailwindcss postcss autoprefixer framer-motion lucide-react @radix-ui/react-slot clsx tailwind-merge
-        ```
+3.  **`framework/architect_checklist.md`**
+    *   A concise checklist for the Architect Agent, focusing on creating a token-efficient Implementation Blueprint.
 
-3.  **Configure Tailwind CSS:**
-    *   Initialize Tailwind: `npx tailwindcss init -p`.
-    *   Configure `tailwind.config.ts` to include all source files in the `content` array.
-    *   Set up the `src/index.css` file with Tailwind's `@layer` directives.
+4.  **`framework/coder_checklist.md`**
+    *   A concise checklist for the Coder Agent, detailing the setup, JIT development, and verification process.
 
-4.  **Integrate shadcn/ui:**
-    *   Run the `shadcn/ui` init command: `npx shadcn-ui@latest init`.
-    *   When prompted, confirm the use of TypeScript, the color variables, and the path alias (`@/*`). This will create the `components.json` file and the `lib/utils.ts` helper.
-    *   Configure path aliases in `tsconfig.json` and `vite.config.ts` to ensure `@/*` resolves to `src/*`.
+5.  **`framework/templates.md`**
+    *   The machine-parsable library of approved component templates.
 
-5.  **Establish Theming (`src/index.css`):**
-    *   Define the entire design system using CSS variables within the `:root` layer. This includes colors (for both light and dark modes), fonts, border radii, and custom shadows.
-    *   This centralized approach, inspired by the reference projects, makes the UI consistent and easy to maintain.
+6.  **`framework/package.template.json`**
+    *   The source of truth for stable, tested dependency versions.
 
 ---
 
-## Phase 2: Architecture & Structure
+## Core Protocols (To be referenced when needed)
 
-A clean structure is key to a maintainable project.
+These protocols are detailed here as they are fundamental principles to be used by the Coder Agent when creating new assets.
 
-1.  **Create Directory Structure:**
-    *   Organize the `src/` directory logically:
-        *   `assets/`: For static files like images and SVGs.
-        *   `components/`: For reusable React components.
-            *   `ui/`: For `shadcn/ui` components.
-            *   `sections/`: For larger, page-specific sections (e.g., `HeroSection.tsx`).
-            *   `icons/`: For custom SVG icon components.
-        *   `hooks/`: For custom React hooks (e.g., `useIntersectionAnimation.tsx`).
-        *   `lib/`: For utility functions.
-        *   `pages/`: For top-level page components.
+### State Management Strategy
 
-2.  **Set Up App Entry Point:**
-    *   `src/main.tsx`: Keep it clean. Its only job is to render the main `App` component.
-    *   `src/App.tsx`: This component should act as the root of the application layout. It's the ideal place to set up global context providers (`TooltipProvider`, `QueryClientProvider`, etc.) and render the main layout structure (e.g., Header, Footer).
+*   **Local State:** Use `useState` for component-specific state.
+*   **Global State:** Use React Context (e.g., the `ThemeProvider` in `templates.md`) for simple shared state like themes or auth status.
+*   **External Libraries:** Avoid unless explicitly required by the briefing for complex state.
 
-3.  **Adopt a Component-First Mentality:**
-    *   Break down every part of the UI into a component.
-    *   Start with the smallest elements (atoms) and compose them into larger components (molecules/organisms), following the principles of Atomic Design.
+### Protocol for Generating New Components
 
----
+When a required component is not in `templates.md`, follow these steps:
 
-## Phase 3: Design, Animation & Responsiveness
+1.  **Define Props:** Define the component's API in TypeScript first.
+2.  **Use Semantic HTML:** Build the structure with semantic elements (`<section>`, etc.).
+3.  **Mobile-First Styling:** Style for small screens first, then use responsive prefixes (`md:`, `lg:`).
+4.  **Apply Design System:** Use only the CSS variables from `src/index.css` for all styling.
+5.  **Animate Consistently:** Wrap in `AnimatedSection` if it should animate on scroll.
+6.  **Ensure Accessibility (A11y):** Use `aria-` attributes and ensure focus states and contrast are correct.
 
-This phase focuses on creating a polished and visually appealing user experience that works on all devices.
+### Manual Configuration Snippets
 
-1.  **Absolute Fidelity to the Design System:** The first action after setup is to define the design system (colors, fonts, spacing) in `src/index.css`, according to the UX Architect's plan. Once defined, this system is the single source of truth for styling. Every component, without exception, must use these variables. The use of `shadcn/ui` is a baseline, not the final result; style the components to perfectly match the project's visual identity.
+*If manual setup is required, these are the correct, Vite-compatible contents.*
 
-2.  **Implement Mobile-First:**
-    *   Design and style for mobile screens first. Use Tailwind's responsive prefixes (`sm:`, `md:`, `lg:`) to scale up the design for larger viewports. This ensures a solid baseline experience on all devices.
-    *   Pay close attention to touch targets, font sizes, and vertical spacing on mobile.
+**`tailwind.config.ts`**
+```typescript
+import type { Config } from 'tailwindcss'
 
-3.  **Use Layout Primitives:**
-    *   Rely on Flexbox and Grid for all layout needs. Avoid absolute positioning for primary layout structures, as it can lead to responsiveness issues.
-    *   Use `flex-col` for vertical stacking on mobile and switch to `lg:flex-row` for horizontal layouts on larger screens.
+const config: Config = {
+  darkMode: ["class"],
+  content: [
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+  ],
+  prefix: "",
+  theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
+    extend: {},
+  },
+  plugins: [require("tailwindcss-animate")],
+}
 
-4.  **Animate with Purpose:**
-    *   Use `framer-motion` to add subtle, meaningful animations that enhance the user experience without being distracting.
-    *   Create a reusable `AnimatedSection` component that uses the `useInView` hook to trigger animations as the user scrolls. This is effective for fade-in and slide-up effects.
-    *   Apply micro-interactions to buttons and interactive elements to provide visual feedback.
+export default config
+```
 
-5.  **Centralize Content:**
-    *   For larger sites, extract all user-facing text (titles, descriptions, etc.) into a central file (e.g., `src/data/content.ts`). This makes it easy to update copy without digging through component files.
-
----
-
-## Phase 4: Finalization & Verification
-
-Before concluding, ensure the project is robust and error-free.
-
-1.  **Code Quality:**
-    * Run the linter (`npm run lint`) to catch any inconsistencies or potential errors in the code.
-
-2.  **Build Verification:**
-    * Execute the production build command (`npm run build`). A successful build is the primary indicator that the application is syntactically correct, all dependencies are resolved, and it's ready for deployment. This is the final and most important verification step.
-
-3.  **Handoff Preparation:**
-    * Prepare a clear summary of the work done and provide instructions for the user to run the project locally using `npm run dev`.
+**`postcss.config.js`**
+```javascript
+export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+```
