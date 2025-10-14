@@ -40,7 +40,67 @@ This document contains all the essential questions needed to define and scope a 
 
 ---
 
-### **Part 4: Content & Features**
+## 4. Visual Identity & Theme
+
+### Look & Feel
+
+Describe the desired look and feel of the website. (e.g., modern, clean, professional, playful, etc.)
+
+- 
+
+### Theme
+
+Provide the color palette for the website. You can use a tool like [Coolors](https://coolors.co/) to generate a color palette.
+
+**Light Mode**
+
+- `background`: 
+- `foreground`: 
+- `card`: 
+- `card-foreground`: 
+- `popover`: 
+- `popover-foreground`: 
+- `primary`: 
+- `primary-foreground`: 
+- `secondary`: 
+- `secondary-foreground`: 
+- `muted`: 
+- `muted-foreground`: 
+- `accent`: 
+- `accent-foreground`: 
+- `destructive`: 
+- `destructive-foreground`: 
+- `border`: 
+- `input`: 
+- `ring`: 
+
+**Dark Mode**
+
+- `background`: 
+- `foreground`: 
+- `card`: 
+- `card-foreground`: 
+- `popover`: 
+- `popover-foreground`: 
+- `primary`: 
+- `primary-foreground`: 
+- `secondary`: 
+- `secondary-foreground`: 
+- `muted`: 
+- `muted-foreground`: 
+- `accent`: 
+- `accent-foreground`: 
+- `destructive`: 
+- `destructive-foreground`: 
+- `border`: 
+- `input`: 
+- `ring`: 
+
+### BorderRadius
+
+- `radius`: 
+
+## 5. Content
 
 *   **4.1. Required Sections/Pages:** List all the sections or pages you envision for the website (e.g., Home, About Us, Services, Our Method, Portfolio, Contact).
 

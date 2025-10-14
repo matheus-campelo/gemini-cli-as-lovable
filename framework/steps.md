@@ -65,19 +65,22 @@ This document outlines a step-by-step, proactive process for building and refact
 *   **Action 3: Install Dependencies.**
 *   **Action 4: Configure Project.**
 
-**Step 4: Build Core Layout & Structure**
+**Step 3.5: Generate Theme**
+*   **Action:** Read the `Theme` section from the `briefing.md`.
+*   **Action:** Read the `framework/theme.template.css` file.
+*   **Action:** Replace the placeholder values in the `theme.template.css` with the values from the `briefing.md`.
+*   **Action:** Create a new file `src/theme.css` with the generated content.
+*   **Goal:** To create a theme file that matches the user's brand.
 *   **Action:** Create the standard directory structure and implement the main layout in `App.tsx`.
 *   **Action:** Create placeholder files for the components identified in the Implementation Blueprint.
 *   **Goal:** Assemble a basic, non-functional skeleton of the main page.
 *   **Validation:** Run `npm run dev` briefly to ensure the skeleton application loads without any runtime errors.
 
-**Step 5: Iterative Component Development (JIT Method)**
-*   **Action 1: Extract Required Templates.**
-    *   Based on the list of required templates from the Implementation Blueprint, parse `framework/templates.md`.
-    *   Extract *only* the code for the specified templates (e.g., the content between `<!--- TEMPLATE_START: HeroSection -->` and `<!--- TEMPLATE_END: HeroSection -->`).
-*   **Action 2: Develop Components.**
-    *   With the small, relevant context of the extracted templates, develop each section component one by one.
-    *   If a component is not in the templates, follow the `Protocol for Generating New Components`.
+**Step 5: Component Assembly**
+*   **Action 1: Copy Required Components.**
+    *   Based on the list of required components from the Implementation Blueprint, copy the component files from `framework/components` to `src/components` in the generated project.
+*   **Action 2: Assemble Pages.**
+    *   Import the components into your page files and use them to build the UI.
 *   **Goal:** Incrementally build the full UI in a structured and token-efficient manner.
 
 **Step 5.5: Visual Quality Self-Assessment**
@@ -101,7 +104,11 @@ This document outlines a step-by-step, proactive process for building and refact
     *   Run `npx playwright test`.
     *   **Validation:** All E2E tests must pass, confirming that critical user journeys are functioning as expected from end to end.
 
-**Step 8: Finalization & Handoff**
+**Step 7.5: Visual Regression Testing**
+*   **Action:** Copy the `framework/tests/visual.spec.ts.template` file to `tests/visual.spec.ts` in the generated project.
+*   **Action:** Run `npx playwright test --update-snapshots` to create the initial snapshots.
+*   **Action:** Run `npx playwright test` to compare the current state of the application with the snapshots.
+*   **Goal:** To ensure that the application's UI has not changed unexpectedly.
 * **Action:** Present a summary of the completed work.
 * **Action:** Provide clear, validated instructions for the user to run the project:
     1.  `npm install`

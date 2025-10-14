@@ -44,16 +44,13 @@ These protocols are detailed here as they are fundamental principles to be used 
 *   **Global State:** Use React Context (e.g., the `ThemeProvider` in `templates.md`) for simple shared state like themes or auth status.
 *   **External Libraries:** Avoid unless explicitly required by the briefing for complex state.
 
-### Protocol for Generating New Components
+### Protocol for Using Framework Components
 
-When a required component is not in `templates.md`, follow these steps:
+When building pages, you will use the pre-built components from the `framework/components` directory. Your task is to copy these components into the `src/components` directory of the generated project and then import them into your pages.
 
-1.  **Define Props:** Define the component's API in TypeScript first.
-2.  **Use Semantic HTML:** Build the structure with semantic elements (`<section>`, etc.).
-3.  **Mobile-First Styling:** Style for small screens first, then use responsive prefixes (`md:`, `lg:`).
-4.  **Apply Design System:** Use only the CSS variables from `src/index.css` for all styling.
-5.  **Animate Consistently:** Wrap in `AnimatedSection` if it should animate on scroll.
-6.  **Ensure Accessibility (A11y):** Use `aria-` attributes and ensure focus states and contrast are correct.
+1.  **Identify Required Components:** Based on the `Implementation Blueprint`, identify the required components from the `framework/components` directory.
+2.  **Copy Components:** Copy the component files from `framework/components` to `src/components` in the generated project.
+3.  **Import and Use:** Import the components into your page files and use them to build the UI.
 
 ### Manual Configuration Snippets
 
@@ -70,6 +67,7 @@ const config: Config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
+    './framework/components/**/*.{ts,tsx}',
   ],
   prefix: "",
   theme: {
@@ -80,7 +78,48 @@ const config: Config = {
         "2xl": "1400px",
       },
     },
-    extend: {},
+    extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        lg: `var(--radius)`,
+        md: `calc(var(--radius) - 2px)`,
+        sm: "calc(var(--radius) - 4px)",
+      },
+    },
   },
   plugins: [require("tailwindcss-animate")],
 }
