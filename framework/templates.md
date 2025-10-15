@@ -44,6 +44,7 @@ These are larger, pre-built sections of a page, located in `framework/components
 - **`SocialProofLogos.tsx`**: A section for displaying logos of customers or partners.
 - **`AuthoritySection.tsx`**: A section for displaying badges or awards from authorities.
 - **`FaqSection.tsx`**: A section for frequently asked questions.
+- **`IllustratedFeatures.tsx`**: A section to showcase features with prominent illustrations or graphics instead of small icons. Ideal for "How it Works" or "Our Values" sections.
 - **`AnimatedHeroSection.tsx`**: A hero section with an animated headline.
 
 ---

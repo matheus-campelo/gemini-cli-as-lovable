@@ -34,7 +34,11 @@ This document contains all the essential questions needed to define and scope a 
 
 *   **3.2. Look & Feel:** If you don't have a brand guide, describe the desired aesthetic and personality of the website in 3-5 keywords (e.g., "modern, clean, bold", "elegant, trustworthy, calm", "playful, energetic, creative").
 
-*   **3.3. Design Inspiration (Likes):** Please provide links to 2-3 websites you admire. What specific elements or aspects do you like about them (e.g., the layout, the colors, the animations, the overall feel)?
+*   **3.3. Font Style Preference:** Do you prefer a modern and clean font (Sans-Serif), a classic and elegant font (Serif), or something more expressive (Display) for titles?
+
+*   **3.4. Graphic Style Preference:** Describe the illustration style you prefer: minimalist with thin lines, colorful and vibrant, or hand-drawn sketches?
+
+*   **3.5. Design Inspiration (Likes):** Please provide links to 2-3 websites you admire. What specific elements or aspects do you like about them (e.g., the layout, the colors, the animations, the overall feel)?
 
 *   **3.4. Design Inspiration (Dislikes):** Please provide links to 1-2 websites you dislike. What specifically do you not like about them?
 

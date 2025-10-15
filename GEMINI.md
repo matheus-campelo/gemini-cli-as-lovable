@@ -12,19 +12,19 @@ This project's logic is defined by a set of Markdown files that act as instructi
 
 *   `README.md`: Provides a general overview of the project, its purpose, and how to get started.
 
-*   `framework/masterprompt.md`: This is the master prompt that defines the AI's persona ("Expert Co-Pilot")...
+*   `framework/masterprompt.md`: This is the master prompt that defines the AI's personas, including the initial **UX Architect**, the **Expert Co-Pilot** for development, and the **QA Engineer** for on-demand test generation.
 
 *   `framework/briefing.md`: A template for the end-user to fill out. It captures all project requirements, including goals, target audience, visual identity ("Look & Feel"), and required content. This file serves as the primary source of truth for project-specific details.
 
 *   `framework/instructions.md`: The technical "Architecture Manual." It dictates the entire tech stack (Vite, React, TypeScript, Tailwind CSS, shadcn/ui, Framer Motion), project setup commands, directory structure, and coding best practices like mobile-first design.
 
-*   `framework/steps.md`: The sequential "Execution Plan." It provides a detailed, step-by-step roadmap for the AI to follow, from project scaffolding and configuration to iterative development and final verification.
+*   `framework/steps.md`: The sequential "Execution Plan." It provides a detailed, step-by-step roadmap for the AI to follow, from project scaffolding and configuration to iterative development, final verification, and on-demand test generation.
 
 *   `framework/templates.md`: The "Approved Component Library." It contains a collection of high-quality, reusable React/TSX code snippets for all standard website sections (e.g., Hero, Features, Footer, CTA), ensuring consistency and quality.
 
 *   `examples/simple-portfolio/briefing.md`: A practical, filled-out example of the briefing document, demonstrating how to define a project within this framework.
 
-* The framework now includes guidelines and steps for implementing end-to-end tests with **Playwright**, ensuring an extra layer of quality and robustness for the generated applications.
+* The framework now includes a robust, on-demand, and token-efficient testing capability. After development, the AI can adopt a **QA Engineer** persona to write targeted **Playwright** tests based on natural language prompts, using a unique "Test-Specific Context" generation method to ensure efficiency.
 
 ## Usage
 
