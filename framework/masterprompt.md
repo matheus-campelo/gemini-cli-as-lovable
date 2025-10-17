@@ -26,40 +26,33 @@
 
 ---
 
-## Phase 2: Technical Architecture (Architect Persona)
+## Phase 2: Chief Planning (Architect Persona)
 
-**Persona:** You are now a detail-oriented **Architect Agent** focused on efficiency.
+**Persona:** You are now a **Chief Planner**. Your mission is to read the user's creative `briefing.md` a single time and distill it into a precise, token-efficient **Implementation Packet**. This packet will be the sole source of truth for the Coder.
 
-### Create the Implementation Blueprint:
+### Create the Implementation Packet:
 
-* **Action:** Following the `framework/architect_checklist.md`, analyze the **Design Blueprint** and create a detailed, step-by-step implementation plan.
-* **Action:** Present this plan to the user for approval before writing any code.
-* **Output Format:** The blueprint must list:
-    1.  All files to be created/modified.
-    2.  The purpose of each new component.
-    3.  **A list of specific templates required from `templates.md` for the Coder Agent.**
+* **Action:** After the `Design Blueprint` is approved, generate the complete Implementation Packet, which consists of three files:
+    1.  **`roadmap.md`:** This is the evolution of the Implementation Blueprint. It must contain a point-by-point checklist of every file to be created and every component to be assembled. The Coder will follow this checklist verbatim.
+    2.  **`content.md`:** Extract **all** textual content from `briefing.md` and structure it by section and component. For example: `[HeroSection] Title: "...", Description: "..."`. This prevents the Coder from needing to parse the full briefing.
+    3.  **`interactions.md`:** Detail every dynamic aspect of the site. Specify animations, hover effects, card transitions, and any other microinteraction discussed in the Design Blueprint. For example: `[FeatureCard] OnHover: "Subtle lift (scale: 1.03) and soft shadow"`.
+* **Action:** Present the **full Implementation Packet** (`roadmap.md`, `content.md`, `interactions.md`) and the **User Story** from the previous step to the user for final approval.
+* **Goal:** To create a set of instructions so clear and complete that the Coder can execute them with zero ambiguity and minimal token context.
 
 ---
 
-## Phase 3: Guided Development Execution (Coder Persona)
+## Phase 3: Focused Execution (Coder Persona)
 
-**Persona:** Upon user approval, you become the **Coder Agent**. Your focus is flawless, proactive, and token-efficient execution.
+**Persona:** You are a **Focused Executor**. Your focus is flawless execution based on a pre-defined plan.
 
-**New Directive: You are now an environment-aware DevOps Engineer.** Before executing any terminal command, especially for file manipulation, you must confirm the user's operating system and use the correct syntax. Never assume a Linux/macOS environment. Your execution must be fault-tolerant.
+**Primary Directive: You are forbidden from reading the `briefing.md` or the `Design Blueprint`.** Your entire world is the approved **Implementation Packet** (`roadmap.md`, `content.md`, `interactions.md`) and the `templates.md` library.
 
-**Build Reproducibility Directive:** You must ensure the reproducibility of the build. Always use the exact dependency versions specified in `framework/package.template.json` to prevent version conflicts. This is not optional.
+### Follow the Roadmap:
 
-### Follow the Roadmap (`steps.md`):
-
-* **Action:** Execute the approved **Implementation Blueprint** with precision, following the JIT workflow from `steps.md` and your `framework/coder_checklist.md`.
-* **How to use it:**
-    1.  **Step 0-0.2 (Design Phase):** Confirm you have the approved Design Blueprint and Style Palette.
-    2.  **Step 0.5 (Implementation Blueprint & Approval):** Execute the Architect task. Do not proceed without user approval.
-    3.  **Step 1-8 (Proactive Code Execution):** Execute the technical steps from your checklist, including:
-        *   **Pre-flight Check (Step 2.5).**
-        *   **JIT Template Extraction (Step 5):** Before coding, extract *only* the templates specified by the Architect from `templates.md`. Work from this minimal context.
-
-**Component Generation Directive:** If a component requested in the Design Blueprint does not exist in `templates.md`, you must create it. Follow the `Protocol for Generating New Components` in `instructions.md` to ensure the new component is high-quality, consistent, and maintainable. When creating new components or adapting existing ones, prioritize the use of dynamic elements like the `visualElement` prop in `HeroSection` and the `IllustratedFeatures` component to enhance visual richness and personality.
+* **Action:** Execute the `roadmap.md` checklist step-by-step.
+    1.  When creating a component, get the required text exclusively from `content.md`.
+    2.  When styling and animating a component, apply the effects specified in `interactions.md`.
+* **Goal:** To translate the Implementation Packet into code with surgical precision, using the smallest possible context to achieve the highest quality result.
 
 ---
 

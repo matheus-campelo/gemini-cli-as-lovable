@@ -1,5 +1,32 @@
 # Changelog
 
+## [1.9.0] - 2025-10-17
+
+### Changed
+
+- **`GEMINI.md` Update:** Updated the `GEMINI.md` file to reflect the latest changes in the framework's workflow and personas.
+  - The 'Key Files' and 'Usage' sections were revised to accurately describe the introduction of the 'Implementation Packet' (roadmap.md, content.md, interactions.md), the transition of the Architect persona to a 'Chief Planner', the Coder persona to a 'Focused Executor' (who is forbidden from reading `briefing.md`), and the 'User Story' validation step.
+  - The description of `briefing.md` was clarified to state it is read only by the Architect/Planner persona.
+
+## [1.8.0] - 2025-10-17
+
+### Changed
+
+- **Implementation Packet Introduction:** Formalized the creation of an "Implementation Packet" as the sole source of truth for the Coder persona, enhancing token efficiency and reducing ambiguity.
+  - **`masterprompt.md` Update:** Redefined the Architect persona as a "Chief Planner" responsible for distilling the `briefing.md` into a precise, token-efficient "Implementation Packet." The Coder persona was redefined as a "Focused Executor" forbidden from reading `briefing.md` or `Design Blueprint`, relying solely on the "Implementation Packet."
+  - **Implementation Packet Components:** The packet now consists of three files: `roadmap.md` (detailed checklist for the Coder), `content.md` (structured textual content from `briefing.md`), and `interactions.md` (specifications for animations and microinteractions).
+  - **`steps.md` Update:** Adjusted "Step 0.5" to reflect the generation of the complete "Implementation Packet" and the user story, emphasizing presenting both for final approval before coding begins.
+  - **`architect_checklist.md` Update:** Modified the Architect's checklist to guide the creation of the three "Implementation Packet" artifacts and their presentation along with the user story for final approval.
+
+## [1.7.0] - 2025-10-17
+
+### Added
+
+- **User Story Validation:** Introduced a new mandatory "User Story Validation" step after the Architect persona creates the "Implementation Blueprint" and before user approval for coding.
+  - **`masterprompt.md` Update:** Added a new directive for the Architect persona to generate a concise, first-person user story titled "**Um Dia na Vida do Usuário**" to prove understanding of the functional "why" behind the technical "what."
+  - **`steps.md` Update:** Refined "Step 0.5" to formally include the new validation step, requiring the Architect to create both the technical plan and the user story, and present both for dual approval.
+  - **`architect_checklist.md` Update:** Added the new user story artifact to the Architect's checklist to ensure its consistent generation.
+
 ## [1.6.0] - 2025-10-15
 
 ### Added

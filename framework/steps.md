@@ -33,15 +33,15 @@ This document outlines a step-by-step, proactive process for building and refact
 
 ## Part 2: Technical Architecture & Implementation (JIT Workflow)
 
-**Step 0.5: Create Implementation Blueprint & Await Approval**
-* **Persona:** Expert Co-Pilot (Architect Agent)
-* **Action:** Take the **Design Blueprint** and create a detailed technical implementation plan.
-* **Plan Requirements:**
-    1.  List every file to be created or modified.
-    2.  Summarize the props and structure for each new component.
-    3.  **Crucially, list all specific templates from `templates.md` that will be required for the implementation (e.g., `HeroSection`, `FaqSection`).**
-* **Action:** Present this plan to the user for approval.
-* **Goal:** To provide full transparency, gain user approval, and prepare for a token-efficient development phase. **Do not proceed without explicit user confirmation.**
+**Step 0.5: Generate the Implementation Packet & Await Final Go-Ahead**
+* **Persona:** Chief Planner (Architect Agent)
+* **Action 1: Generate the Packet.** Based on the approved `Design Blueprint`, create the full **Implementation Packet**.
+    * **`roadmap.md`:** A detailed, step-by-step checklist of files and components for the Coder.
+    * **`content.md`:** A structured document with all website copy, mapped to its respective component.
+    * **`interactions.md`:** A specification for all animations and interactive effects.
+* **Action 2: Generate User Story.** Author the "**Um Dia na Vida do Usuário**" narrative to validate functional understanding.
+* **Action 3: Present for Final Approval.** Present the complete **Implementation Packet** (all three `.md` files) and the **User Story** to the user. This is the final "go/no-go" decision point before coding begins.
+* **Goal:** To get a comprehensive, multi-faceted approval from the user, ensuring the technical, content, and interaction plans are perfectly aligned with their vision, all while preparing a token-efficient context for the next phase.
 
 **Step 1: Pre-Flight Check & Asset Verification**
 * **Persona:** Coder Agent
